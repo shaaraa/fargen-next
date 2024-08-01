@@ -1,0 +1,55 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #4d194d, #006466);
+  position: relative; /* Ensure the overlay can be positioned absolutely */
+}
+
+.overlay {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  cursor: pointer;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0); /* Optional: Background color with transparency */
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 10; /* Make sure it is on top */
+}
+
+.overlayText {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.container {
+  width: 640px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.button {
+  padding: 18px 80px;
+  border: none;
+  border-radius: 5px;
+  background-color: #8338ec;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #7209b7;
+}
