@@ -18,9 +18,9 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       <meta property="fc:frame:button:2" content="Share on Farcaster" />
       <meta property="fc:frame:button:2:action" content="link" />
       <meta property="fc:frame:button:2:target" content="https://warpcast.com/~/compose?text=Excited for the launch of FarGen! 🎨%0A%0AGenerate AI art and images in frame%0A%0ALaunching on August 5 at 14:00 EST 🚀🖼️%0A%0A👨‍🎨 Frame by: @sharas.eth%0A%0AShare this frame for a chance to win one of 10 exclusive Early-Pass NFTs to use FarGen frame!👇%0A&embeds[]=${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL as string)}" />
-      <meta property="fc:frame:button:1" content="Get Early-Pass" />
-      <meta property="fc:frame:button:1:action" content="link" />
-      <meta property="fc:frame:button:1:target" content="https://zora.co/collect/base:0x6ec3b83091a440b46844beabd141b887fd034390/1?referrer=0xdF2D9E58227CE5e37ED3e40BC49d4442C970A2D6" />
+      <meta property="fc:frame:button:3" content="Get Early-Pass" />
+      <meta property="fc:frame:button:3:action" content="link" />
+      <meta property="fc:frame:button:3:target" content="https://zora.co/collect/base:0x6ec3b83091a440b46844beabd141b887fd034390/1?referrer=0xdF2D9E58227CE5e37ED3e40BC49d4442C970A2D6" />
     </head><body></body></html>`)
   }
 
