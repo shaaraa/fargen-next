@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { ImageResult } from './types'
+import { ImageResult } from '../../../lib/types'
 
 // In-memory storage for results
 const results: { [key: string]: ImageResult | null } = {};
