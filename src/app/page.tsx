@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'FarGen - AI Image Generator',
     description: 'Generate AI images in Farcaster Frames',
-    images: ["https://i.ibb.co/K2Ln7gR/get-pass.jpg"],
+    images: [`${process.env.NEXT_PUBLIC_SITE_URL}/get-pass.jpg`],
   },
   other: {
     'fc:frame': 'vNext',
