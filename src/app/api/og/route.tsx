@@ -3,7 +3,7 @@ import { ImageResponse } from 'next/og';
 export const runtime = 'edge';
 
 export async function GET(request: Request) {
-  const launchTime = new Date('2024-08-05T14:00:00-04:00');
+  const launchTime = new Date(`${process.env.START_DATE}`);
   const currentTime = new Date();
 
   let countdownText = 'The event has started!';
