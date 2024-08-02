@@ -27,7 +27,7 @@ export async function GET(request: Request) {
           justifyContent: 'center',
           height: '100%',
           width: '100%',
-          backgroundImage: `url(${process.env.NEXT_PUBLIC_SITE_URL}/countdown.jpg)`,
+          backgroundImage: `url(${process.env.NEXT_PUBLIC_SITE_URL}/countdown_.jpg)`,
           backgroundSize: 'cover',
           fontSize: 30,
           fontWeight: 700,
@@ -40,8 +40,8 @@ export async function GET(request: Request) {
       </div>
     ),
     {
-      width: 630,
-      height: 630,
+      width: 883,
+      height: 883,
     }
   );
 }

@@ -1,11 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { CheckTokenHoldByFarcasterUserInput } from '../../../lib/airstack'
+import {
+  init,
+  validateFramesMessage,
+  ValidateFramesMessageInput,
+  ValidateFramesMessageOutput,
+} from "@airstack/frames";
+
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
+  init(process.env.AIRSTACK_API_KEY as string);
   const launchDate = process.env.START_DATE as string
   const launchTime = new Date(launchDate);
   const currentTime = new Date();
   
+  const frameData = await req.json();
+  const trustedData = await validateFramesMessage(frameData);
+  const {isValid, message} = trustedData
+
   if (currentTime < launchTime) {
     return new NextResponse(`<!DOCTYPE html><html><head>
       <title>Countdown</title>
@@ -24,12 +36,10 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     </head><body></body></html>`)
   }
 
-  const frameData = await req.json();
-  const {untrustedData} = frameData;
-  const fid = untrustedData?.fid;
-  console.log(untrustedData);
+  
+  const fid = message?.data.fid
 
-  if (!fid) {
+  if (!fid || !isValid) {
     return new NextResponse(`<!DOCTYPE html><html><head>
       <title>Error</title>
       <meta property="fc:frame" content="vNext" />
