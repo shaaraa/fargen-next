@@ -14,6 +14,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const { untrustedData } = data;
   const { inputText } = untrustedData;
   
+  const styleParam = req.nextUrl.searchParams.get('style');
   const resultId = req.nextUrl.searchParams.get('id');
   
   if (resultId) {
@@ -21,13 +22,12 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     return await checkImage(resultId);
   } else {
     // This is a generate request
-    return await generateImage(inputText);
+    return await generateImage(inputText, styleParam);
   }
 }
 
-async function generateImage(inputText: string): Promise<NextResponse> {
-  const style = 'Photorealistic'; // You can make this dynamic if needed
-  const prompt = `Masterpiece, best quality, ${style}, ${inputText}`;
+async function generateImage(inputText: string , style: string): Promise<NextResponse> {
+  const prompt = `Masterpiece, best quality, highly detailed, ${style}, ${inputText}`;
 
   const resultId = generateUniqueId();
   results[resultId] = null; // Initialize the result as null
