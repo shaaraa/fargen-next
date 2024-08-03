@@ -4,7 +4,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const data = await req.json();
   const { untrustedData } = data;
   const { buttonIndex } = untrustedData;
-
+  const fid = req.nextUrl.searchParams.get('fid');
   let style: string;
   let imageSrc: string;
 
@@ -37,7 +37,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     <meta property="fc:frame:image:aspect_ratio" content="1:1" />
     <meta property="fc:frame:input:text" content="Enter your prompt" />
     <meta property="fc:frame:button:1" content="Generate" />
-    <meta property="fc:frame:post_url" content="${process.env.NEXT_PUBLIC_SITE_URL}/api/generate?style=${style}" />
+    <meta property="fc:frame:post_url" content="${process.env.NEXT_PUBLIC_SITE_URL}/api/generate?style=${style}&fid=${fid}" />
     <meta property="fc:frame:button:2" content="Back" />
     <meta property="fc:frame:button:2:action" content="post" />
     <meta property="fc:frame:button:2:target" content="${process.env.NEXT_PUBLIC_SITE_URL}/api/check" />

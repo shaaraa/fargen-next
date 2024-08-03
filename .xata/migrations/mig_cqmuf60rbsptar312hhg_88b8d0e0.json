@@ -1,0 +1,18 @@
+{
+  "id": "mig_cqmuf60rbsptar312hhg",
+  "parentID": "mig_cqmuecll09mgl5u62l9g",
+  "checksum": "1:88b8d0e0badd9c1596c95fc973013a2c979d6c801ef84dba3bd86898483e10b2",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "tipped_amount",
+          "type": "int",
+          "notNull": true,
+          "defaultValue": "0"
+        },
+        "table": "farcaster"
+      }
+    }
+  ]
+}

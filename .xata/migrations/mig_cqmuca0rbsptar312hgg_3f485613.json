@@ -1,0 +1,16 @@
+{
+  "id": "mig_cqmuca0rbsptar312hgg",
+  "parentID": "mig_cqmubrorbsptar312hfg",
+  "checksum": "1:3f485613a8e4e392e9bd472f0446a89fdf619475798609362f50a64da5ab589c",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "generated_url",
+          "type": "string"
+        },
+        "table": "farcaster"
+      }
+    }
+  ]
+}

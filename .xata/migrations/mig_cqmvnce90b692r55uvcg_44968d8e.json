@@ -1,0 +1,16 @@
+{
+  "id": "mig_cqmvnce90b692r55uvcg",
+  "parentID": "mig_cqmufp0rbsptar312hig",
+  "checksum": "1:44968d8eaf1de184863a038abcc17d0c40e50b4d954bddce2a248b69288ec297",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "generated_data",
+          "type": "json"
+        },
+        "table": "farcaster"
+      }
+    }
+  ]
+}

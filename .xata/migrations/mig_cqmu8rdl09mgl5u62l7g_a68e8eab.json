@@ -1,0 +1,11 @@
+{
+  "id": "mig_cqmu8rdl09mgl5u62l7g",
+  "checksum": "1:a68e8eabf5244492fa95982f2257e5421a04324380973636cbf6c580979ecd75",
+  "operations": [
+    {
+      "addTable": {
+        "table": "farcaster"
+      }
+    }
+  ]
+}

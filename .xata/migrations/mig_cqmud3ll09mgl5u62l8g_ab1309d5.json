@@ -1,0 +1,18 @@
+{
+  "id": "mig_cqmud3ll09mgl5u62l8g",
+  "parentID": "mig_cqmuca0rbsptar312hgg",
+  "checksum": "1:ab1309d502c7cba2c5d9b2b9a6e63f75d1caec1da30dae1197f219d2754421f9",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "uid",
+          "type": "string",
+          "notNull": true,
+          "defaultValue": "111"
+        },
+        "table": "farcaster"
+      }
+    }
+  ]
+}

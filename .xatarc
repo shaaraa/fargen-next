@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://shara-s-workspace-nb8bsm.us-east-1.xata.sh/db/fargen",
+  "codegen": {
+    "output": "src/lib/xata.ts"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "mig_cqn2kbe90b692r55v040",
+  "parentID": "mig_cqn2k2m90b692r55v030",
+  "checksum": "1:ffbac77ca6d25501cb4177b66ad7420ad1d901de69c6ad10f2ac15085fc83e20",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "fid",
+          "type": "string",
+          "notNull": true,
+          "defaultValue": "0"
+        },
+        "table": "farcaster"
+      }
+    }
+  ]
+}

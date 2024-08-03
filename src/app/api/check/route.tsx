@@ -13,11 +13,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const launchDate = process.env.START_DATE as string
   const launchTime = new Date(launchDate);
   const currentTime = new Date();
-  
+  //const paramFid = Number(req.nextUrl.searchParams.get('fid'));
   const frameData = await req.json();
   const trustedData = await validateFramesMessage(frameData);
   const {isValid, message} = trustedData
-
+  //console.log(message);
   if (currentTime < launchTime) {
     return new NextResponse(`<!DOCTYPE html><html><head>
       <title>Countdown</title>
@@ -36,7 +36,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     </head><body></body></html>`)
   }
 
-  
   const fid = message?.data.fid
 
   if (!fid || !isValid) {
@@ -51,6 +50,8 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   }
 
   const hasToken = await CheckTokenHoldByFarcasterUserInput(fid);
+  
+  //const user = await GetFarcasterUserDetails(fid);
   //const hasToken = true;
   if (hasToken) {
     return new NextResponse(`<!DOCTYPE html><html><head>
@@ -62,7 +63,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       <meta property="fc:frame:button:2" content="Photorealistic" />
       <meta property="fc:frame:button:3" content="Painting" />
       <meta property="fc:frame:button:4" content="3D Cartoon" />
-      <meta property="fc:frame:post_url" content="${process.env.NEXT_PUBLIC_SITE_URL}/api/prompt" />
+      <meta property="fc:frame:post_url" content="${process.env.NEXT_PUBLIC_SITE_URL}/api/prompt/?fid=${fid}" />
     </head></html>`)
   } else {
     return new NextResponse(`<!DOCTYPE html><html><head>
