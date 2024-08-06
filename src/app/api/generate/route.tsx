@@ -106,7 +106,7 @@ async function checkImage(resultId: string): Promise<NextResponse> {
     <meta property="fc:frame:button:2:target" content="https://build.top/nominate/0xdF2D9E58227CE5e37ED3e40BC49d4442C970A2D6" />
     <meta property="fc:frame:button:3" content="Share on Farcaster" />
     <meta property="fc:frame:button:3:action" content="link" />
-    <meta property="fc:frame:button:3:target" content="https://warpcast.com/~/compose?text=🎨✨ I just generated this amazing image in-frame with FarGen! 🖼️%0A👨‍🎨 Frame by: @sharas.eth%0A🚀 Try it yourself! 👇%0A&embeds%5B%5D=${encodeURIComponent(imageUrl)}&embeds%5B%5D=${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_URL)}" />
+    <meta property="fc:frame:button:3:target" content="https://warpcast.com/~/compose?text=🎨✨ I just generated this amazing image in-frame with FarGen! 🖼️%0A👨‍🎨 Frame by: @sharas.eth%0A🚀 Try it yourself! 👇%0A&embeds[]=${imageUrl}&embeds[]=${process.env.NEXT_PUBLIC_SITE_URL}" />
   </head></html>`)
 }
 
