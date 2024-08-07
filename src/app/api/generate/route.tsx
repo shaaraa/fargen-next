@@ -100,7 +100,7 @@ async function checkImage(resultId: string): Promise<NextResponse> {
     <meta property="fc:frame:image" content="${imageUrl}" />
     <meta property="fc:frame:image:aspect_ratio" content="1:1" />
     <meta property="fc:frame:button:1" content="Generate Another" />
-    <meta property="fc:frame:post_url" content="${process.env.NEXT_PUBLIC_SITE_URL}" />
+    <meta property="fc:frame:post_url" content="${process.env.NEXT_PUBLIC_SITE_URL}/api/check" />
     <meta property="fc:frame:button:2" content="Nominate @Sharas.eth" />
     <meta property="fc:frame:button:2:action" content="link" />
     <meta property="fc:frame:button:2:target" content="https://build.top/nominate/0xdF2D9E58227CE5e37ED3e40BC49d4442C970A2D6" />
