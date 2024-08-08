@@ -19,23 +19,16 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const ethAddress = req.nextUrl.searchParams.get('ethAddress') || '';
 
   if (resultId) {
-    // This is a check request
     return await checkImage(resultId);
   } else {
-    // This is a generate request
     return await generateImage(inputText, styleParam, fid, userName);
   }
 }
 
 async function generateImage(inputText: string , style: string , fid: string, userName: string): Promise<NextResponse> {
   const prompt = `Masterpiece, best quality, highly detailed, ${style}, ${inputText}`;
-
   const resultId = generateUniqueId();
-  //results[resultId] = null; // Initialize the result as null
-
-  // Start the image generation process
   generateImageAsync(resultId, prompt, fid, userName);
-
   return new NextResponse(`<!DOCTYPE html><html><head>
     <title>Generating Image</title>
     <meta property="fc:frame" content="vNext" />
@@ -57,8 +50,9 @@ async function generateImageAsync(resultId: string, prompt: string, fid: string,
         "num_inference_steps": "4",
         "enable_safety_checker": false
       },
+      pollInterval: 2000,
       logs: true,
-    }) as ImageResult;  // Assert the type here
+    }) as ImageResult;
 
     // Store the result in Xata
     await xata.db.farcaster.create({
@@ -75,13 +69,8 @@ async function generateImageAsync(resultId: string, prompt: string, fid: string,
 }
 
 async function checkImage(resultId: string): Promise<NextResponse> {
-  console.log(resultId);
-  //const result = results[resultId];
-  //console.log(result);
-  
   // Query the farcaster table for a record with matching uid
   const result = await xata.db.farcaster.filter({ uid: resultId }).getFirst();
-  console.log(result);
 
   if (!result || !result.generated_url) {
     return new NextResponse(`<!DOCTYPE html><html><head>

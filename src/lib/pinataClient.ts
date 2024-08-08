@@ -1,8 +1,6 @@
 // lib/pinataClient.ts
 export async function getFarcasterUserData(fid: number) {
     const url = `https://api.pinata.cloud/v3/farcaster/users/${fid}`;
-    console.log('Fetching URL:', url);
-    
     const response = await fetch(url, {
         method: 'GET',
         headers: {

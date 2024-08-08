@@ -12,8 +12,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const userData1 = await getFarcasterUserData(fid)
   const username = userData1.user.username;
   const ethAddress = userData1.user.verified_addresses.eth_addresses[0];
-  console.log(username);
-  console.log(ethAddress);
 
   switch (buttonIndex) {
     case 1:

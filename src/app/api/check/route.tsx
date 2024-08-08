@@ -2,9 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { CheckTokenHoldByFarcasterUserInput } from '../../../lib/airstack'
 import {
   init,
-  validateFramesMessage,
-  ValidateFramesMessageInput,
-  ValidateFramesMessageOutput,
+  validateFramesMessage
 } from "@airstack/frames";
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
@@ -12,11 +10,10 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const launchDate = process.env.START_DATE as string
   const launchTime = new Date(launchDate);
   const currentTime = new Date();
-  //const paramFid = Number(req.nextUrl.searchParams.get('fid'));
   const frameData = await req.json();
   const trustedData = await validateFramesMessage(frameData);
   const {isValid, message} = trustedData
-  //console.log(message);
+
   if (currentTime < launchTime) {
     return new NextResponse(`<!DOCTYPE html><html><head>
       <title>Countdown</title>
@@ -50,7 +47,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
   const hasToken = await CheckTokenHoldByFarcasterUserInput(fid);
   
-  //const user = await GetFarcasterUserDetails(fid);
   //const hasToken = true;
   if (hasToken) {
     return new NextResponse(`<!DOCTYPE html><html><head>

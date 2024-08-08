@@ -15,7 +15,6 @@ export async function CheckTokenHoldByFarcasterUserInput(fid: number): Promise<b
 
   try {
     const { data, error } = await checkTokenHoldByFarcasterUser(input);
-    console.log(data)
     if (error) {
       console.error("Error checking token hold:", error);
       return false;
@@ -35,7 +34,6 @@ export async function GetFarcasterUserDetails(fid: number): Promise<boolean> {
 
   try {
     const { data, error } = await getFarcasterUserDetails(input);
-    console.log(data)
     if (error) {
       console.error("Error checking token hold:", error);
       return false;

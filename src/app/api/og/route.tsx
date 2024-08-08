@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-export const runtime = 'edge';
+//export const runtime = 'edge';
 
 export async function GET(request: Request) {
   const launchTime = new Date(`${process.env.START_DATE}`);
@@ -45,3 +45,5 @@ export async function GET(request: Request) {
     }
   );
 }
+
+export const dynamic = 'force-dynamic'
