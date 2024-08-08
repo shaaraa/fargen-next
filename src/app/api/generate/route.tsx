@@ -15,24 +15,26 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const styleParam = req.nextUrl.searchParams.get('style') || '';
   const resultId = req.nextUrl.searchParams.get('id');
   const fid = req.nextUrl.searchParams.get('fid') || '';
-  
+  const userName = req.nextUrl.searchParams.get('uid') || '';
+  const ethAddress = req.nextUrl.searchParams.get('ethAddress') || '';
+
   if (resultId) {
     // This is a check request
     return await checkImage(resultId);
   } else {
     // This is a generate request
-    return await generateImage(inputText, styleParam, fid);
+    return await generateImage(inputText, styleParam, fid, userName);
   }
 }
 
-async function generateImage(inputText: string , style: string , fid: string): Promise<NextResponse> {
+async function generateImage(inputText: string , style: string , fid: string, userName: string): Promise<NextResponse> {
   const prompt = `Masterpiece, best quality, highly detailed, ${style}, ${inputText}`;
 
   const resultId = generateUniqueId();
   //results[resultId] = null; // Initialize the result as null
 
   // Start the image generation process
-  generateImageAsync(resultId, prompt, fid);
+  generateImageAsync(resultId, prompt, fid, userName);
 
   return new NextResponse(`<!DOCTYPE html><html><head>
     <title>Generating Image</title>
@@ -44,7 +46,7 @@ async function generateImage(inputText: string , style: string , fid: string): P
   </head></html>`)
 }
 
-async function generateImageAsync(resultId: string, prompt: string, fid: string) {
+async function generateImageAsync(resultId: string, prompt: string, fid: string, userName: string) {
   try {
     const result = await fal.subscribe("fal-ai/fast-lightning-sdxl", {
       input: { 
@@ -63,7 +65,7 @@ async function generateImageAsync(resultId: string, prompt: string, fid: string)
       fid: fid,
       generated_url: result.images[0].url,
       generated_data: result,
-      user_name: "",
+      user_name: userName,
       uid: resultId,
       can_generate: true
     });

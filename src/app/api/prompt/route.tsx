@@ -1,12 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { getFarcasterUserData } from '../../../lib/pinataClient'
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   const data = await req.json();
   const { untrustedData } = data;
   const { buttonIndex } = untrustedData;
-  const fid = req.nextUrl.searchParams.get('fid');
+  const fid = req.nextUrl.searchParams.get('fid') as unknown as number;
   let style: string;
   let imageSrc: string;
+
+  const userData1 = await getFarcasterUserData(fid)
+  const username = userData1.user.username;
+  const ethAddress = userData1.user.verified_addresses.eth_addresses[0];
+  console.log(username);
+  console.log(ethAddress);
 
   switch (buttonIndex) {
     case 1:
@@ -37,7 +44,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     <meta property="fc:frame:image:aspect_ratio" content="1:1" />
     <meta property="fc:frame:input:text" content="Enter your prompt" />
     <meta property="fc:frame:button:1" content="Generate" />
-    <meta property="fc:frame:post_url" content="${process.env.NEXT_PUBLIC_SITE_URL}/api/generate?style=${style}&fid=${fid}" />
+    <meta property="fc:frame:post_url" content="${process.env.NEXT_PUBLIC_SITE_URL}/api/generate?style=${style}&fid=${fid}&uid=${username}&ethAddress=${ethAddress}" />
     <meta property="fc:frame:button:2" content="Back" />
     <meta property="fc:frame:button:2:action" content="post" />
     <meta property="fc:frame:button:2:target" content="${process.env.NEXT_PUBLIC_SITE_URL}/api/check" />

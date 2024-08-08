@@ -7,7 +7,6 @@ import {
   ValidateFramesMessageOutput,
 } from "@airstack/frames";
 
-
 export async function POST(req: NextRequest): Promise<NextResponse> {
   init(process.env.AIRSTACK_API_KEY as string);
   const launchDate = process.env.START_DATE as string
@@ -35,8 +34,8 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       <meta property="fc:frame:button:3:target" content="https://zora.co/collect/base:0x6ec3b83091a440b46844beabd141b887fd034390/1?referrer=0xdF2D9E58227CE5e37ED3e40BC49d4442C970A2D6" />
     </head><body></body></html>`)
   }
-
-  const fid = message?.data.fid
+  
+  const fid = message?.data.fid as number
 
   if (!fid || !isValid) {
     return new NextResponse(`<!DOCTYPE html><html><head>
