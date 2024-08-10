@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import * as fal from '@fal-ai/serverless-client'
 import { ImageResult } from '../../../lib/types'
 import { xata } from '../../../lib/xataClient'
+import { waitUntil } from '@vercel/functions'
 
 fal.config({
   credentials: process.env.GEN_API_KEY as string,
@@ -28,7 +29,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 async function generateImage(inputText: string , style: string , fid: string, userName: string): Promise<NextResponse> {
   const prompt = `Masterpiece, best quality, highly detailed, ${style}, ${inputText}`;
   const resultId = generateUniqueId();
-  generateImageAsync(resultId, prompt, fid, userName);
+  waitUntil(generateImageAsync(resultId, prompt, fid, userName));
   return new NextResponse(`<!DOCTYPE html><html><head>
     <title>Generating Image</title>
     <meta property="fc:frame" content="vNext" />
@@ -50,8 +51,9 @@ async function generateImageAsync(resultId: string, prompt: string, fid: string,
         "num_inference_steps": "4",
         "enable_safety_checker": false
       },
-      pollInterval: 2000,
-      logs: true,
+      //pollInterval: 2000,
+      mode: "streaming",
+      logs: false,
     }) as ImageResult;
 
     // Store the result in Xata

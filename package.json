@@ -12,6 +12,7 @@
     "@airstack/frames": "^1.1.12",
     "@coinbase/onchainkit": "^0.9.5",
     "@fal-ai/serverless-client": "^0.14.2",
+    "@vercel/functions": "^1.4.0",
     "@xata.io/client": "^0.30.0",
     "dotenv": "^16.4.5",
     "next": "^14.2.5",
