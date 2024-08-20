@@ -33,8 +33,8 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       <meta property="fc:frame:button:3:target" content="https://zora.co/collect/base:0x6ec3b83091a440b46844beabd141b887fd034390/1?referrer=0xdF2D9E58227CE5e37ED3e40BC49d4442C970A2D6" />
     </head><body></body></html>`)
   }
-  const fid = 111
-  //const fid = message?.data.fid as number
+  //const fid = 111
+  const fid = message?.data.fid as number
   const userData1 = await getFarcasterUserData(fid)
   const userName = userData1.user.username;
   const ethAddress = userData1.user.verified_addresses.eth_addresses[0];
@@ -51,7 +51,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   }
 
   const hasToken = await CheckTokenHoldByFarcasterUserInput(fid);
-console.log('has token: ',hasToken)
+
   const subType = hasToken ? "Early Pass" : "free";
   let canGenerate = hasToken; // If the user has a token, they can generate more images
 
