@@ -24,6 +24,22 @@ const tables = [
       { name: "fid", type: "string", notNull: true, defaultValue: "0" },
     ],
   },
+  {
+    name: "Users",
+    columns: [
+      { name: "fid", type: "text", notNull: true, defaultValue: "1" },
+      {
+        name: "can_generate",
+        type: "bool",
+        notNull: true,
+        defaultValue: "false",
+      },
+      { name: "tipped_amount", type: "int", notNull: true, defaultValue: "0" },
+      { name: "user_name", type: "text" },
+      { name: "no_of_gen", type: "int" },
+      { name: "sub_type", type: "text", notNull: true, defaultValue: "free" },
+    ],
+  },
 ] as const;
 
 export type SchemaTables = typeof tables;
@@ -32,8 +48,12 @@ export type InferredTypes = SchemaInference<SchemaTables>;
 export type Farcaster = InferredTypes["farcaster"];
 export type FarcasterRecord = Farcaster & XataRecord;
 
+export type Users = InferredTypes["Users"];
+export type UsersRecord = Users & XataRecord;
+
 export type DatabaseSchema = {
   farcaster: FarcasterRecord;
+  Users: UsersRecord;
 };
 
 const DatabaseClient = buildClient();
