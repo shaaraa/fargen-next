@@ -24,7 +24,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       break;
     case 3:
       style = 'Painting';
-      imageSrc = '/painting.jpg';
+      imageSrc = '/paintings.jpg';
       break;
     case 4:
       style = '3D Cartoon';
