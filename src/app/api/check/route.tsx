@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { CheckTokenHoldByFarcasterUserInput } from '../../../lib/airstack'
+import { CheckTokenHoldByFarcasterAddress } from '../../../lib/airstack'
 import { xata } from '../../../lib/xataClient'
 import { getFarcasterUserData } from '../../../lib/pinataClient'
 import {
@@ -38,7 +38,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const userData1 = await getFarcasterUserData(fid)
   const userName = userData1.user.username;
   const ethAddress = userData1.user.verified_addresses.eth_addresses[0];
-  
+
   if (!fid || !isValid) {
     return new NextResponse(`<!DOCTYPE html><html><head>
       <title>Error</title>
@@ -50,7 +50,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     </head></html>`)
   }
 
-  const hasToken = await CheckTokenHoldByFarcasterUserInput(fid);
+  const hasToken = await CheckTokenHoldByFarcasterAddress(ethAddress);
 
   const subType = hasToken ? "Early Pass" : "free";
   let canGenerate = hasToken; // If the user has a token, they can generate more images

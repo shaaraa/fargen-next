@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 const vercelURL = process.env.NEXT_PUBLIC_SITE_URL as string;
 const encodedVercelURL = encodeURIComponent(vercelURL);
-const messageText = "Excited for the launch of FarGen! 🎨\n\nGenerate AI art and images in frame\n\nLaunching on August 5 at 14:00 EST 🚀🖼️\n\n👨‍🎨 Frame by: @sharas.eth\n\nShare this frame for a chance to win one of 10 exclusive Early-Pass NFTs to use FarGen frame!👇\n";
+const messageText = "🚀 FarGen Update! 🎨\n\nAll users can now generate up to 3 AI images for free! 🖼️\n\nEarly Pass holders enjoy unlimited image generations forever. 🕒\n\nStart creating your AI art in-frame now!\n\n👨‍🎨 Frame by: @sharas.eth\n\nShare this frame with your friends and start generating!👇";
 const encodedMessage = encodeURIComponent(messageText);
 const href = `https://warpcast.com/~/compose?text=${encodedMessage}&embeds%5B%5D=${encodedVercelURL}`;
 
